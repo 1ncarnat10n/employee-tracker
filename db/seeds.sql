@@ -1,10 +1,10 @@
 INSERT INTO department (department_name)
 VALUES
-('Sales'),
-('Finance'),
-('Legal'),
-('Engineering'),
-('Human Resources');
+    ('Sales'),
+    ('Finance'),
+    ('Legal'),
+    ('Engineering'),
+    ('Human Resources');
 
 INSERT INTO roles (title, salary, department_id)
 VALUES
