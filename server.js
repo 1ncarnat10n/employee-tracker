@@ -1,3 +1,4 @@
+// Modules being used
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const { printTable } = require("console-table-printer");
@@ -16,6 +17,7 @@ db.connect(() => {
     mainMenu();
 });
 
+// Function for the main menu and selections
 function mainMenu() {
   inquirer.prompt({
       type: "list",
@@ -50,6 +52,7 @@ function mainMenu() {
   });
 }
 
+// Function to view departments
 function viewDepartments() {
   const query = "SELECT id, name as department FROM department;";
 
@@ -63,6 +66,7 @@ function viewDepartments() {
   });
 }
 
+// Function to view roles
 function viewRoles() {
   const query = `
       SELECT role.id, title, salary, name as department
@@ -79,7 +83,7 @@ function viewRoles() {
   });
 }
 
-
+// Function to view employees
 function viewEmployees() {
   const query = `
       SELECT employee.id, employee.first_name, employee.last_name, title, name as department, salary, 
@@ -99,7 +103,7 @@ function viewEmployees() {
   });
 }
 
-
+// Function to view departments
 function addDepartment() {
   inquirer.prompt([
       {
@@ -119,6 +123,7 @@ function addDepartment() {
   });
 }
 
+// Function to add a new role
 function addRole() {
   db.query("SELECT id as value, name as name FROM department", (err, departmentData) => {
       if (err) {
@@ -158,7 +163,7 @@ function addRole() {
   });
 }
 
-
+// Function to add an employee
 function addEmployee() {
   db.query("SELECT id as value, title as name from role ", (err, roleData) => {
       db.query("SELECT id as value, CONCAT(first_name, ' ', last_name) as name FROM employee WHERE manager_id is null", (err, ManagerData) => {
@@ -175,13 +180,13 @@ function addEmployee() {
               },
               {
                   type: "list",
-                  message: "Choose the following title:",
+                  message: "Choose the following role:",
                   name: "role_id",
                   choices: roleData
               },
               {
                   type: "list",
-                  message: "Choose the following title:",
+                  message: "Choose the following manager:",
                   name: "manager_id",
                   choices: ManagerData
               },
@@ -200,6 +205,7 @@ function addEmployee() {
   });
 }
 
+// Function to update an employee's role
 function updateEmployeeRole() {
   db.query("SELECT id as value, title as name from role ", (err, roleData) => {
       db.query("SELECT id as value, CONCAT(first_name, ' ', last_name) as name FROM employee WHERE manager_id is null", (err, employeeData) => {

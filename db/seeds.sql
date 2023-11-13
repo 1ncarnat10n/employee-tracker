@@ -2,7 +2,7 @@ USE employeetrack_db;
 
 INSERT INTO department (name)
 VALUES ("Sales"),
-       ("Engeineering"),
+       ("Engineering"),
        ("Finance"),
        ("Legal");
 
