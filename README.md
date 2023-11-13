@@ -10,13 +10,15 @@ Through this project, I learned the intricacies of building a command-line appli
 
 ## Video Demo URL
 
+[Employee Tracker Demo Video](https://drive.google.com/file/d/1PfsbwnOGM2sjNfKWINF_vZXnQ_KojmPx/view)
+
 ## Installation
 
 Installed the program using npm init -y and npm i. Must also make sure that console-table-printer, mysql2, and inquirer modules are installed. 
 
 Go to the db folder and run mysql -u root to access the mysql interface. Run source schema.sql and seeds.sql to add the database and its entries.
 
-Then, move out of the folder and run the program using npm run start.
+Then, move out of the folder (or open new integrated terminal) and run the program using npm run start.
 
 ## Usage
 
